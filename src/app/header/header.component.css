@@ -1,0 +1,53 @@
+nav {
+  background-color: rgb(236, 236, 236);
+
+  box-shadow: 0px 1px 3px rgb(158, 158, 158);
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 1.5rem;
+}
+
+.headerLogo {
+  width: 15%;
+}
+
+.headerLogo a {
+  width: 100%;
+
+  font-size: 1.5rem;
+  font-weight: 900;
+
+  color: rgb(92, 92, 92);
+}
+
+.linksContainer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.linksContainer a {
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  color: rgb(124, 124, 124);
+}
+
+.navigate {
+  display: flex;
+
+  gap: 2rem;
+}
+
+.hiddenMenu {
+  display: none;
+
+  visibility: hidden;
+}
