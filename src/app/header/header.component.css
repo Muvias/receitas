@@ -8,6 +8,8 @@ nav {
   display: flex;
   align-items: center;
 
+  gap: 2rem;
+
   padding: 1rem 1.5rem;
 }
 
@@ -43,7 +45,7 @@ nav {
 .navigate {
   display: flex;
 
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .hiddenMenu {
