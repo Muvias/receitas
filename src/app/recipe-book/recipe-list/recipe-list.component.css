@@ -1,13 +1,24 @@
-.recipeBookContainer {
+.recipeItemContainer {
   display: flex;
   flex-direction: column;
 
-  gap: 1.5rem;
+  width: 40vw;
 
   padding: 2rem;
 }
 
-.recipeBookContainer button {
+.buttonContainer {
+  max-width: 30rem;
+  width: 100%;
+
+  padding-bottom: 1rem;
+
+  margin-bottom: 1rem;
+
+  border-bottom: 1px solid #bebebe;
+}
+
+.buttonContainer button {
   padding: 12px;
 
   border: none;
