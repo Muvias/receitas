@@ -1,0 +1,15 @@
+.ingredientsList {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 15vw;
+  width: 100%;
+
+  padding: 16px 32px;
+}
+
+.ingredient {
+  padding: 6px 12px;
+
+  border: 1px solid rgb(201, 201, 201);
+}

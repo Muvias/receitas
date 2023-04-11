@@ -1,0 +1,78 @@
+.editContainer {
+  max-width: 40vw;
+
+  width: 100%;
+
+  padding: 16px 32px;
+}
+
+form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.labels {
+  display: flex;
+
+  gap: 2rem;
+}
+
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.labelContainer label {
+  font-weight: 700;
+}
+
+.labelContainer input {
+  width: 12rem;
+
+  padding: 8px;
+
+  font-size: 14px;
+
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+#amount {
+  width: 4rem;
+}
+
+.buttonsContainer {
+  display: flex;
+
+  gap: 8px;
+}
+
+.buttonsContainer button {
+  padding: 8px 16px;
+
+  border: none;
+  border-radius: 4px;
+
+  font-weight: 700;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+#success {
+  background-color: rgb(56, 139, 56);
+}
+
+#danger {
+  background-color: rgb(253, 56, 56);
+}
+
+#clear {
+  background-color: rgb(67, 67, 255);
+}
