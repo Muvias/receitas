@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header (componentSelected)="onNavigate($event)"></app-header>
 <div>
-  <app-recipe-book></app-recipe-book>
-  <app-shopping-list></app-shopping-list>
+  <app-recipe-book *ngIf="loadedComponent === 'recipe'"></app-recipe-book>
+  <app-shopping-list *ngIf="loadedComponent === 'shopping'"></app-shopping-list>
 </div>
