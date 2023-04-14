@@ -1,1 +1,18 @@
-<p>recipe-item works!</p>
+<div
+  class="recipeContainer"
+>
+  <a href="#" (click)="handleOpenRecipe()">
+    <div>
+      <h3>{{ recipe.name }}</h3>
+      <p>{{ recipe.description }}</p>
+    </div>
+
+    <span>
+      <img
+        [src]="recipe.imagePath"
+        alt="{{ recipe.name }}"
+        style="max-height: 50px;"
+      >
+    </span>
+  </a>
+</div>

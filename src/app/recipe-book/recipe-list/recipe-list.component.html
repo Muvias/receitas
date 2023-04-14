@@ -3,24 +3,9 @@
     <button>Nova Receita</button>
   </div>
 
-  <div
-    *ngFor="let recipe of recipes"
-    class="recipeContainer"
-  >
-    <a href="#">
-      <div>
-        <h3>{{ recipe.name }}</h3>
-        <p>{{ recipe.description }}</p>
-      </div>
-
-      <span>
-        <img
-          [src]="recipe.imagePath"
-          alt="{{ recipe.name }}"
-          style="max-height: 50px;"
-        >
-      </span>
-    </a>
-  </div>
-  <app-recipe-item></app-recipe-item>
+  <app-recipe-item
+    *ngFor="let recipeEl of recipes"
+    [recipe]="recipeEl"
+    (recipeSelected)="onRecipeClicked(recipeEl)"
+  ></app-recipe-item>
 </div>

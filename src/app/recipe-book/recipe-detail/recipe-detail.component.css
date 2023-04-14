@@ -1,3 +1,8 @@
+.imageContainer, .imageContainer img {
+  width: 50rem;
+  aspect-ratio: 16/9;
+}
+
 .recipeDetailContent button {
   padding: 8px 12px;
 
