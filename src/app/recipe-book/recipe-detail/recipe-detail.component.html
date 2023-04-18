@@ -3,12 +3,15 @@
     <img [src]="recipe.imagePath" alt="{{ recipe.name }}">
   </div>
 
-  <div class="recipeDetailContent">
+  <div
+    class="recipeDetailContent"
+    appDropdown
+  >
     <h1>{{ recipe.name }}</h1>
 
-    <button>Manage Recipe ↓</button>
+    <button>Gerenciar receita ↓</button>
 
-    <ul>
+    <ul class="dropdownMenu">
       <li><a href="#">Adc em lista de compras</a></li>
       <li><a href="#">Editar receita</a></li>
       <li><a href="#">Deletar receita</a></li>

@@ -18,7 +18,12 @@
   cursor: pointer;
 }
 
-.recipeDetailContent ul {
+.dropdownMenu {
   display: none;
   visibility: hidden;
+}
+
+.dropdownMenu.show {
+  display: initial;
+  visibility: visible;
 }
