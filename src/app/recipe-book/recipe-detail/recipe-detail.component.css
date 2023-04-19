@@ -18,12 +18,24 @@
   cursor: pointer;
 }
 
-.dropdownMenu {
+.recipeDetailContent .dropdownMenu {
   display: none;
   visibility: hidden;
+
+  padding: 1rem;
+
+  margin: 1rem 0;
+
+  box-shadow: 0px 1px 3px rgb(158, 158, 158);
+
+  background-color: white;
 }
 
-.dropdownMenu.show {
-  display: initial;
+.recipeDetailContent.open .dropdownMenu {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
   visibility: visible;
 }
