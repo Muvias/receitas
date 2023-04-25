@@ -12,7 +12,7 @@
     <button>Gerenciar receita ↓</button>
 
     <ul class="dropdownMenu">
-      <li><a href="#">Adc em lista de compras</a></li>
+      <li><a (click)="onAddToShoppingList()">Adc em lista de compras</a></li>
       <li><a href="#">Editar receita</a></li>
       <li><a href="#">Deletar receita</a></li>
     </ul>
@@ -20,6 +20,10 @@
 
   <div>
     <p>{{ recipe.description }}</p>
-    <p>Ingredientes</p>
+    <div>
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} <span>Qtd.: {{ingredient.amount}}</span></li>
+      </ul>
+    </div>
   </div>
 </div>
