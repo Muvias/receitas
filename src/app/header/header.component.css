@@ -10,7 +10,9 @@ nav {
 
   gap: 2rem;
 
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem;
+
+  height: 3rem;
 }
 
 .headerLogo {
@@ -45,7 +47,22 @@ nav {
 .navigate {
   display: flex;
 
+  height: 48px;
+
   gap: 1.5rem;
+}
+
+.navigate li {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  padding: 0 24px;
+}
+
+.active {
+  background-color: rgb(224, 224, 224);
 }
 
 /* ***** Dropdown Menu ***** */
@@ -71,7 +88,7 @@ nav {
   background-color: white;
 }
 
-.showMenu.open ~ .hiddenMenu {
+.showMenu.open~.hiddenMenu {
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -8,14 +8,13 @@
 
     <div class="linksContainer">
       <ul class="navigate">
-        <li><a href="#" (click)="handleViewComponentChange('recipe')">Receitas</a></li>
-        <li><a href="#" (click)="handleViewComponentChange('shopping')">Lista de Compras</a></li>
+        <li routerLinkActive="active"><a routerLink="/recipes">Receitas</a></li>
+        <li routerLinkActive="active"><a routerLink="/shoppingList">Lista de Compras</a></li>
       </ul>
 
       <ul>
         <li class="showMenuReference">
           <a
-            href="#"
             role="button"
             class="showMenu"
             appDropdown
@@ -23,8 +22,8 @@
             Gerenciar ↓
           </a>
           <ul class="hiddenMenu">
-            <li><a href="#">Salvar Dados</a></li>
-            <li><a href="#">Pegar Dados</a></li>
+            <li><a>Salvar Dados</a></li>
+            <li><a>Pegar Dados</a></li>
           </ul>
         </li>
       </ul>
