@@ -40,8 +40,7 @@ import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.co
     AppRouterModule
   ],
   providers: [
-    ShoppingListService,
-    RecipeService
+    ShoppingListService
   ],
   bootstrap: [AppComponent]
 })
