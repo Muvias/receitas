@@ -1,7 +1,12 @@
 <div
   class="recipeContainer"
 >
-  <a style="cursor: pointer;">
+  <a
+    class="blabla"
+    style="cursor: pointer;"
+    [routerLink]="[index]"
+    routerLinkActive="active"
+  >
     <div>
       <h3>{{ recipe.name }}</h3>
       <p>{{ recipe.description }}</p>
