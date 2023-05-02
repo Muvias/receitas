@@ -1,13 +1,15 @@
 <div class="editContainer">
   <div>
-    <form>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="labels">
         <div class="labelContainer">
           <label for="name">Name</label>
           <input
             type="text"
             id="name"
-            #nameInput
+            name="name"
+            ngModel
+            required
           >
         </div>
 
@@ -16,30 +18,24 @@
           <input
             type="number"
             id="amount"
-            #amountInput
+            name="amount"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
           >
         </div>
       </div>
 
       <div class="buttonsContainer">
-        <button
-          type="submit"
-          id="success"
-          (click)="onAddItem()"       >
-        Add
-      </button>
-        <button
-          type="button"
-          id="danger"
-        >
-        Deletar
-      </button>
-        <button
-          type="button"
-          id="clear"
-        >
-        Limpar
-      </button>
+        <button type="submit" id="success" [disabled]="!f.valid">
+          {{ editMode ? "Atualizar" : "Adicionar" }}
+        </button>
+        <button type="button" id="danger" (click)="onDeleteItem()" *ngIf="editMode">
+          Deletar
+        </button>
+        <button type="button" id="clear" (click)="onClear()">
+          Limpar
+        </button>
       </div>
     </form>
   </div>

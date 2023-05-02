@@ -6,7 +6,8 @@
     <ul class="ingredientsList">
       <a
         class="ingredient"
-        *ngFor="let ingredient of ingredients"
+        *ngFor="let ingredient of ingredients; let id = index"
+        (click)="onEditItem(id)"
       >
         {{ ingredient.name }} ({{ ingredient.amount }})
       </a>
