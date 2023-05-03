@@ -14,3 +14,15 @@ a {
 
   color: #000;
 }
+
+#success {
+  background-color: rgb(56, 139, 56);
+}
+
+#danger {
+  background-color: rgb(253, 56, 56);
+}
+
+#clear {
+  background-color: rgb(67, 67, 255);
+}
