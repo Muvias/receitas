@@ -1,33 +1,35 @@
 <div class="editContainer">
-  <div class="buttonContainer">
-    <button id="success" type="submit">Salvar</button>
-    <button id="danger" type="button">Cancelar</button>
-  </div>
-
-  <div class="formContainer">
-    <div>
-      <label for="name">Nome</label>
-      <input type="text" id="name">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="buttonContainer">
+      <button id="success" type="submit">Salvar</button>
+      <button id="danger" type="button">Cancelar</button>
     </div>
 
-    <div>
-      <label for="imagePath">URL da imagem</label>
-      <input type="text" id="name">
-    </div>
+    <div class="formContainer">
+      <div>
+        <label for="name">Nome</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
 
-    <div>
-      <img src="" alt="">
-    </div>
+      <div>
+        <label for="imagePath">URL da imagem</label>
+        <input type="text" id="name" formControlName="imagePath">
+      </div>
 
-    <div>
-      <label for="description">Descrição</label>
-      <textarea id="description" rows="6"></textarea>
-    </div>
+      <div>
+        <img src="" alt="">
+      </div>
 
-    <div class="ingredientInputs">
-      <input type="text" id="textInput">
-      <input type="number" id="numberInput">
-      <button type="button" id="danger">X</button>
+      <div>
+        <label for="description">Descrição</label>
+        <textarea id="description" rows="6" formControlName="description"></textarea>
+      </div>
+
+      <div class="ingredientInputs">
+        <input type="text" id="textInput">
+        <input type="number" id="numberInput">
+        <button type="button" id="danger">X</button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
