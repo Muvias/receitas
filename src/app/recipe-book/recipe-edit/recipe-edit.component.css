@@ -62,5 +62,10 @@ button {
   flex: 1;
 
   max-width: 4rem;
+}
 
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid rgb(226, 0, 0);
+  border-radius: 4px;
 }

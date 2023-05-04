@@ -1,7 +1,13 @@
 <div class="editContainer">
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="buttonContainer">
-      <button id="success" type="submit">Salvar</button>
+      <button
+        id="success"
+        type="submit"
+        [disabled]="!recipeForm.valid"
+      >
+        Salvar
+      </button>
       <button id="danger" type="button">Cancelar</button>
     </div>
 

@@ -15,6 +15,11 @@ a {
   color: #000;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 #success {
   background-color: rgb(56, 139, 56);
 }

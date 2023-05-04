@@ -64,8 +64,3 @@ form {
 
   cursor: pointer;
 }
-
-.buttonsContainer button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
