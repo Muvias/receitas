@@ -25,10 +25,18 @@
         <textarea id="description" rows="6" formControlName="description"></textarea>
       </div>
 
-      <div class="ingredientInputs">
-        <input type="text" id="textInput">
-        <input type="number" id="numberInput">
-        <button type="button" id="danger">X</button>
+      <div formArrayName="ingredients">
+        <div
+          class="ingredientInputs"
+          *ngFor="let ingredientCtrl of controls; let i = index"
+          [formGroupName]="i"
+        >
+          <input type="text" id="textInput" formControlName="name">
+          <input type="number" id="numberInput" formControlName="amount">
+          <button type="button" id="danger">X</button>
+        </div>
+
+        <button type="button" id="success" (click)="onAddIngredient()">Adicionar Ingrediente</button>
       </div>
     </div>
   </form>
