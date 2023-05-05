@@ -8,7 +8,7 @@
       >
         Salvar
       </button>
-      <button id="danger" type="button">Cancelar</button>
+      <button id="danger" type="button" routerLink="../">Cancelar</button>
     </div>
 
     <div class="formContainer">
@@ -19,11 +19,11 @@
 
       <div>
         <label for="imagePath">URL da imagem</label>
-        <input type="text" id="name" formControlName="imagePath">
+        <input type="text" id="name" formControlName="imagePath" #imagePath>
       </div>
 
       <div>
-        <img src="" alt="">
+        <img [src]="imagePath.value" alt="prévia da imagem da receita">
       </div>
 
       <div>
