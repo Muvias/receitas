@@ -43,7 +43,8 @@ import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.compo
     AppRouterModule
   ],
   providers: [
-    ShoppingListService
+    ShoppingListService,
+    RecipeService
   ],
   bootstrap: [AppComponent]
 })

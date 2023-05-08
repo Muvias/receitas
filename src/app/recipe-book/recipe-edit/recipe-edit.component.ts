@@ -43,7 +43,7 @@ export class RecipeEditComponent implements OnInit{
     }
 
     this.router.navigate(['../'], { relativeTo: this.route })
-  }
+  };
 
   onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
@@ -55,7 +55,11 @@ export class RecipeEditComponent implements OnInit{
         ])
       })
     )
-  }
+  };
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  };
 
   private initForm() {
     let recipeName = '';

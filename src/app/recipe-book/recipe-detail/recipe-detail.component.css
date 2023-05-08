@@ -39,3 +39,13 @@
 
   visibility: visible;
 }
+
+.dropdownMenu li a {
+  cursor: pointer;
+}
+
+.deleteButton {
+  font-weight: 600;
+
+  color: rgb(230, 1, 1);
+}
