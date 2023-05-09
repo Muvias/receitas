@@ -70,6 +70,10 @@ nav {
   position: relative;
 }
 
+.showMenu {
+  cursor: pointer;
+}
+
 .hiddenMenu {
   position: absolute;
 
@@ -93,7 +97,11 @@ nav {
   align-items: center;
   flex-direction: column;
 
-  gap: 4px;
+  gap: 12px;
 
   visibility: visible;
+}
+
+.hiddenMenu li a {
+  cursor: pointer;
 }
