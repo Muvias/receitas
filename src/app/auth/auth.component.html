@@ -1,0 +1,17 @@
+<div>
+  <form>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email">
+    </div>
+    <div>
+      <label for="password">Senha</label>
+      <input type="password" id="password">
+    </div>
+    <div>
+      <button type="submit">{{ isLoginMode ? 'Entrar' : 'Registrar' }}</button>
+
+      <button type="button" (click)="onSwitchMode()">Mudar para {{ isLoginMode ? 'registre-se' : 'login' }}</button>
+    </div>
+  </form>
+</div>
