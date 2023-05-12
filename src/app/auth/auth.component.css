@@ -1,0 +1,47 @@
+.authContainer {
+  padding: 1rem;
+}
+
+.divInputsContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.labelContainer label {
+  font-weight: 700;
+}
+
+.labelContainer input {
+  padding: 4px;
+}
+
+.buttonsContainer {
+  display: flex;
+
+  gap: 1rem;
+
+  margin-top: 1rem;
+}
+
+.buttonsContainer button {
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 4px;
+
+  font-weight: 700;
+
+  color: white;
+  background-color: rgb(43, 82, 255);
+
+  cursor: pointer;
+}
