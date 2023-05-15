@@ -45,3 +45,16 @@
 
   cursor: pointer;
 }
+
+.errorContainer {
+  max-width: 14rem;
+  width: 100%;
+
+  padding: 8px;
+
+  margin-bottom: 1rem;
+
+  border-radius: 4px;
+
+  background-color: rgb(255, 193, 193);
+}

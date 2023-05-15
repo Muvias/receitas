@@ -1,5 +1,13 @@
 <div class="authContainer">
-  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+  <div *ngIf="error" class="errorContainer">
+    <p style="color: red;">{{ error }}</p>
+  </div>
+
+  <div *ngIf="isLoading" style="text-align: center; margin-top: 30vh;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
     <div class="divInputsContainer">
       <div class="labelContainer">
         <label for="email">Email</label>

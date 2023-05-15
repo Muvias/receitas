@@ -22,6 +22,7 @@ import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recip
 import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
 import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.compo
     ShoppingEditComponent,
     RecipeStartComponent,
     RecipeEditComponent,
+    LoadingSpinnerComponent,
     AuthComponent,
     DropdownDirective,
   ],
