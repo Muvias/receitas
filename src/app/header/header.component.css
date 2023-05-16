@@ -65,6 +65,15 @@ nav {
   background-color: rgb(224, 224, 224);
 }
 
+.manageContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.manageContainer li a{
+  cursor: pointer;
+}
+
 /* ***** Dropdown Menu ***** */
 .showMenuReference {
   position: relative;

@@ -8,25 +8,26 @@
 
     <div class="linksContainer">
       <ul class="navigate">
-        <li routerLinkActive="active"><a routerLink="/recipes">Receitas</a></li>
-        <li routerLinkActive="active"><a routerLink="/auth">Entrar</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes">Receitas</a></li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Entrar</a></li>
         <li routerLinkActive="active"><a routerLink="/shoppingList">Lista de Compras</a></li>
       </ul>
 
-      <ul>
-        <li class="showMenuReference">
+      <ul class="manageContainer">
+        <li class="showMenuReference" *ngIf="isAuthenticated">
           <a
-            role="button"
-            class="showMenu"
-            appDropdown
+          role="button"
+          class="showMenu"
+          appDropdown
           >
-            Gerenciar ↓
-          </a>
-          <ul class="hiddenMenu">
-            <li><a (click)="onSaveData()">Salvar Dados</a></li>
-            <li><a (click)="onFetchData()">Pegar Dados</a></li>
-          </ul>
-        </li>
+          Gerenciar ↓
+        </a>
+        <ul class="hiddenMenu">
+          <li><a (click)="onSaveData()">Salvar Dados</a></li>
+          <li><a (click)="onFetchData()">Pegar Dados</a></li>
+        </ul>
+      </li>
+      <li *ngIf="isAuthenticated"><a style="color: rgb(253, 56, 56)">Sair</a></li>
       </ul>
     </div>
   </div>
