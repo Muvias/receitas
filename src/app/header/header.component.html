@@ -27,7 +27,7 @@
           <li><a (click)="onFetchData()">Pegar Dados</a></li>
         </ul>
       </li>
-      <li *ngIf="isAuthenticated"><a style="color: rgb(253, 56, 56)">Sair</a></li>
+      <li *ngIf="isAuthenticated"><a (click)="onLogout()" style="color: rgb(253, 56, 56)">Sair</a></li>
       </ul>
     </div>
   </div>
