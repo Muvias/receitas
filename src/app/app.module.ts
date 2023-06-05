@@ -9,7 +9,7 @@ import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
-import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+import * as fromApp from './store/app.reducer';
 
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
@@ -25,7 +25,7 @@ import { CoreModule } from './core.module';
     AppRouterModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer}),
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   bootstrap: [AppComponent]
 })

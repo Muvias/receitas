@@ -4,10 +4,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list.service';
 
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromShoppingList from '../store/shopping-list.reducer';
+import * as fromApp from 'src/app/store/app.reducer';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -22,14 +21,13 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editedItem: Ingredient;
 
   constructor(
-    private shoppingListService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>
+    private store: Store<fromApp.AppState>
   ) { };
 
   ngOnInit() {
     this.subscription = this.store.select('shoppingList').subscribe(stateData => {
       if (stateData.editedIngredientIndex > -1) {
-        this.editMode = false;
+        this.editMode = true;
         this.editedItem = stateData.editedIngredient;
         this.slForm.setValue({
           name: this.editedItem.name,
