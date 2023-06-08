@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { of } from "rxjs";
-import { switchMap, catchError, map } from "rxjs/operators";
+import { switchMap, catchError, map, tap } from "rxjs/operators";
 import { Actions, ofType, createEffect } from "@ngrx/effects";
 
 import * as AuthActions from './auth.actions';
+import { Router } from "@angular/router";
 
 export interface AuthResponseData {
   idToken: string;
@@ -31,16 +32,42 @@ export class AuthEffects {
     map(resData => {
       const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
 
-      return of(new AuthActions.Login({
+      return new AuthActions.Login({
         email: resData.email,
         userId: resData.localId,
         token: resData.idToken,
         expirationDate
-      }));
+      });
     }),
     catchError(error => {
-      return of();
-    })),
+      let errorMessage = 'Um erro desconhecido ocorreu!';
+
+      if (!error.error || !error.error.error) {
+        return of(new AuthActions.LoginFail(errorMessage));
+      };
+
+      switch (error.error.error.message) {
+        case 'EMAIL_EXISTS':
+          errorMessage = 'Este email já existe!';
+          break;
+        case 'EMAIL_NOT_FOUND':
+          errorMessage = 'Dados inválidos!';
+          break;
+        case 'INVALID_PASSWORD':
+          errorMessage = 'Dados inválidos!';
+          break;
+      };
+
+      return of(new AuthActions.LoginFail(errorMessage));
+    }))
+  );
+
+  authSuccess = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.LOGIN),
+    tap(() => {
+      this.router.navigate(['/']);
+    })
+  ),
     {
       dispatch: false
     }
@@ -48,6 +75,7 @@ export class AuthEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
   ) { };
 };
