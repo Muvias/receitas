@@ -38,7 +38,7 @@ export class AuthService {
     );
 
     this.store.dispatch(
-      new AuthActions.Login({
+      new AuthActions.AuthenticateSuccess({
         email,
         userId,
         token,
@@ -130,7 +130,7 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.store.dispatch(
-        new AuthActions.Login({
+        new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,

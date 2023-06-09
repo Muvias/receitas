@@ -1,12 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
-import { Observable } from 'rxjs';
-
 import { Store } from '@ngrx/store';
 import { Router } from "@angular/router";
 
-import { AuthResponseData, AuthService } from "./auth.service";
+import { AuthService } from "./auth.service";
 
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
@@ -46,14 +44,10 @@ export class AuthComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    this.isLoading = true;
-
-    let authObs: Observable<AuthResponseData>;
-
     if (this.isLoginMode) {
       this.store.dispatch(new AuthActions.LoginStart({ email, password }));
     } else {
-      authObs = this.authService.signup(email, password);
+      this.store.dispatch(new AuthActions.SignupStart({ email, password }));
     };
 
     form.reset();

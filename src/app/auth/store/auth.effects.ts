@@ -17,8 +17,59 @@ export interface AuthResponseData {
   registered?: boolean;
 };
 
+const handleAuthentication = (email: string, userId: string, token: string, expiresIn: number) => {
+  const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+
+  return new AuthActions.AuthenticateSuccess({
+    email,
+    userId,
+    token,
+    expirationDate
+  });
+};
+
+const handleError = (error: any) => {
+  let errorMessage = 'Um erro desconhecido ocorreu!';
+
+  if (!error.error || !error.error.error) {
+    return of(new AuthActions.AuthenticateFail(errorMessage));
+  };
+
+  switch (error.error.error.message) {
+    case 'EMAIL_EXISTS':
+      errorMessage = 'Este email já existe!';
+      break;
+    case 'EMAIL_NOT_FOUND':
+      errorMessage = 'Dados inválidos!';
+      break;
+    case 'INVALID_PASSWORD':
+      errorMessage = 'Dados inválidos!';
+      break;
+  };
+
+  return of(new AuthActions.AuthenticateFail(errorMessage));
+};
+
 @Injectable()
 export class AuthEffects {
+  authSignup = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.SIGNUP_START),
+    switchMap((signupAction: AuthActions.SignupStart) => {
+      return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAWEVifCGq-jjhCcC9nJA4o2aoXUlSUL9c', {
+        email: signupAction.payload.email,
+        password: signupAction.payload.password,
+        returnSecureToken: true
+      })
+    })
+  ).pipe(
+    map(resData => {
+      return handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+    }),
+    catchError(error => {
+      return handleError(error);
+    }))
+  );
+
   authLogin = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.LOGIN_START),
     switchMap((authData: AuthActions.LoginStart) => {
@@ -30,40 +81,15 @@ export class AuthEffects {
     })
   ).pipe(
     map(resData => {
-      const expirationDate = new Date(new Date().getTime() + +resData.expiresIn * 1000);
-
-      return new AuthActions.Login({
-        email: resData.email,
-        userId: resData.localId,
-        token: resData.idToken,
-        expirationDate
-      });
+      return handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
     }),
     catchError(error => {
-      let errorMessage = 'Um erro desconhecido ocorreu!';
-
-      if (!error.error || !error.error.error) {
-        return of(new AuthActions.LoginFail(errorMessage));
-      };
-
-      switch (error.error.error.message) {
-        case 'EMAIL_EXISTS':
-          errorMessage = 'Este email já existe!';
-          break;
-        case 'EMAIL_NOT_FOUND':
-          errorMessage = 'Dados inválidos!';
-          break;
-        case 'INVALID_PASSWORD':
-          errorMessage = 'Dados inválidos!';
-          break;
-      };
-
-      return of(new AuthActions.LoginFail(errorMessage));
+      return handleError(error);
     }))
   );
 
   authSuccess = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.LOGIN),
+    ofType(AuthActions.AUTHENTICATE_SUCCESS),
     tap(() => {
       this.router.navigate(['/']);
     })
