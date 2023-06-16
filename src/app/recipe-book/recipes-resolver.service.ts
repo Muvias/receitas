@@ -1,9 +1,10 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 
-import { take } from "rxjs/operators";
-import { Actions, ofType } from "@ngrx/effects";
+import { of } from "rxjs";
+import { take, map, switchMap } from "rxjs/operators";
 import { Store } from '@ngrx/store';
+import { Actions, ofType } from "@ngrx/effects";
 
 import { Recipe } from './recipe.model';
 
@@ -21,7 +22,22 @@ export const RecipesResolverService: ResolveFn<Recipe[]> = (
   state: RouterStateSnapshot
 ) => {
   const actions$ = inject(Actions);
-  inject(Store<fromApp.AppState>).dispatch(new RecipesActions.FetchRecipes());
+  const store = inject(Store<fromApp.AppState>);
 
-  return actions$.pipe(ofType(RecipesActions.SET_RECIPES), take(1));
+  return store.select('recipes').pipe(
+    take(1),
+    map(recipesState => {
+      return recipesState.recipes;
+    }),
+    switchMap(recipes => {
+      if (recipes.length === 0) {
+        store.dispatch(new RecipesActions.FetchRecipes());
+
+        return actions$.pipe(ofType(RecipesActions.SET_RECIPES), take(1));
+      } else {
+        return of(recipes);
+      };
+    })
+  );
+
 };

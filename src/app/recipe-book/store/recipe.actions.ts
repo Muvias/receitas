@@ -7,6 +7,7 @@ export const FETCH_RECIPES = '[Recipes] Fetch Recipes';
 export const ADD_RECIPE = '[Recipes] Add Recipe';
 export const UPDATE_RECIPE = '[Recipes] Update Recipe';
 export const DELETE_RECIPE = '[Recipes] Delete Recipe';
+export const STORE_RECIPES = '[Recipes] Store Recipe';
 
 
 export class SetRecipes implements Action {
@@ -20,7 +21,7 @@ export class FetchRecipes implements Action {
   readonly type = FETCH_RECIPES;
 };
 
-export class AddRecipes implements Action {
+export class AddRecipe implements Action {
   readonly type = ADD_RECIPE;
 
   constructor(public payload: Recipe) { };
@@ -33,6 +34,10 @@ export class UpdateRecipe implements Action {
 
 };
 
+export class StoreRecipes implements Action {
+  readonly type = STORE_RECIPES;
+};
+
 export class DeleteRecipe implements Action {
   readonly type = DELETE_RECIPE;
 
@@ -40,5 +45,5 @@ export class DeleteRecipe implements Action {
 };
 
 
-export type RecipesActions = SetRecipes | FetchRecipes | AddRecipes | UpdateRecipe | DeleteRecipe;
+export type RecipesActions = SetRecipes | FetchRecipes | AddRecipe | UpdateRecipe | StoreRecipes | DeleteRecipe;
 
